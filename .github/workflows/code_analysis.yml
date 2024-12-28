@@ -4,6 +4,10 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   code-analysis:
     runs-on: ubuntu-latest
@@ -29,7 +33,7 @@ jobs:
     # Step 4: Run Code Analysis Script
     - name: Run Code Analysis
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub's built-in token
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         source .venv/bin/activate
         python fetch_pull_requests.py

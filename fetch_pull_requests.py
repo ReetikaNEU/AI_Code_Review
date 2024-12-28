@@ -152,7 +152,7 @@ def main():
 
     # Check if the token is set
     if not GITHUB_TOKEN:
-        raise ValueError("GITHUB_TOKEN environment variable is not set! Please set it in your shell configuration.")
+        raise ValueError("GITHUB_TOKEN environment variable is not set!")
 
     # Authenticate with GitHub
     g = Github(GITHUB_TOKEN)
