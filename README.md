@@ -140,26 +140,27 @@ python app.py
 
 Visit http://localhost:5000 to see the historical analysis results.
 
-Explanation of Key Terms
+**Explanation of Key Terms**
 
-Term	Explanation
-Pylint	Pylint is a static code analysis tool for Python that looks for programming errors, helps enforce coding standards, and checks code quality.
-PyGithub	PyGithub is a Python library that allows you to interact with the GitHub API, enabling access to repositories, issues, pull requests, and much more.
-Flask	Flask is a micro web framework written in Python. It is used to build the web interface that displays analysis results.
-CodeBERT	CodeBERT is a pre-trained deep learning model designed by Microsoft for code understanding and generation. It is based on the transformer architecture.
-GitHub Actions	GitHub Actions is a CI/CD tool that automates workflows directly from GitHub repositories. It is used to run the analysis and other scripts automatically.
-SQLite	SQLite is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine. It is used to store analysis results.
-CI/CD	Continuous Integration and Continuous Deployment is a practice that involves automated code testing and deployment, ensuring code quality and fast delivery.
+Pylint - Pylint is a static code analysis tool for Python that looks for programming errors, helps enforce coding standards, and checks code quality.
+PyGithub - PyGithub is a Python library that allows you to interact with the GitHub API, enabling access to repositories, issues, pull requests, and much more.
+Flask - Flask is a micro web framework written in Python. It is used to build the web interface that displays analysis results.
+CodeBERT - CodeBERT is a pre-trained deep learning model designed by Microsoft for code understanding and generation. It is based on the transformer architecture.
+GitHub Actions - GitHub Actions is a CI/CD tool that automates workflows directly from GitHub repositories. It is used to run the analysis and other scripts automatically.
+SQLite - SQLite is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine. It is used to store analysis results.
+CI/CD - Continuous Integration and Continuous Deployment is a practice that involves automated code testing and deployment, ensuring code quality and fast delivery.
 
-User Notification
+**User Notification**
 
 After the code analysis is complete, users are notified via:
 	1.	Email Notification: Contributors receive an email summarizing the pull request analysis results, including the Pylint score and AI analysis.
 	2.	GitHub Status Update: A status check is added to the pull request to indicate whether the code quality passed or failed based on the analysis.
 	3.	GitHub Issue Comment: A detailed comment is added to the pull request with the full analysis report, including Pylint and AI analysis, highlighting any issues.
 
-Future Improvements
+**Future Improvements**
 	•	Fine-tuning of CodeBERT: In the future, the model will be further fine-tuned for more accurate code analysis, especially for specific programming languages or use cases.
 	•	Model Update: As the project evolves, a newer and more optimized version of CodeBERT will be integrated into the workflow to enhance the performance and accuracy of the analysis.
 
+
 Thank you for using AI Code Review!
+
