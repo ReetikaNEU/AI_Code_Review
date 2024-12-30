@@ -6,6 +6,7 @@ from torch.utils.data import DataLoader, Dataset
 
 # model_path = "./fine_tuned_codebert_with_auxnew/checkpoint-250"
 model_path = "./fine_tuned_codebert/checkpoint-2504"
+
 tokenizer = RobertaTokenizer.from_pretrained(model_path)
 model = RobertaWithoutAuxiliaryFeatures.from_pretrained(model_path)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
