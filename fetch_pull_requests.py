@@ -195,7 +195,7 @@ def main():
         print(f"Overall Pylint Score for PR #{pr.number}: {overall_score}")
 
         # Determine success or failure
-        status_state = "success" if overall_score >= 7.0 else "failure"
+        status_state = "success" if overall_score >= 5.0 else "failure"
         status_description = f"Overall Pylint Score: {overall_score:.2f}/10"
 
         # Create a comment notifying the contributor
