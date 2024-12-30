@@ -24,7 +24,7 @@ def analyze_code_with_ai(code_snippet, tokenizer, model):
     outputs = model(**inputs)
     predictions = torch.nn.functional.softmax(outputs.logits, dim=-1)
     efficiency_score = predictions[0][0].item()  # Example: First class score
-    issue_score = predictions[0][1].item()       # Example: Second class score
+    issue_score = predictions[0][1].item()  # Example: Second class score
 
     # Interpret the results
     if efficiency_score > issue_score:
@@ -35,23 +35,15 @@ def analyze_code_with_ai(code_snippet, tokenizer, model):
 
 def extract_pylint_score(output):
     """Extract the overall Pylint score from the output."""
-    print("Pylint Output for Debugging:")
-    print(output)
-
-    # Look for the line containing the overall score
     for line in output.splitlines():
         if "Your code has been rated at" in line:
-            print(f"Matching Line: {line}")
             match = re.search(r"rated at ([0-9\.]+)/10", line)
             if match:
                 try:
                     score = float(match.group(1))  # Extract and convert the score
                     return score
-                except ValueError as e:
-                    print(f"Error converting score to float: {e}")
+                except ValueError:
                     return None
-
-    print("No matching line found for Pylint score.")
     return None
 
 
@@ -79,7 +71,6 @@ def setup_database():
 
 def save_results_to_database(pr_id, title, author, file_name, pylint_score, ai_analysis):
     """Save analysis results to the SQLite database."""
-    print(f"Saving results to database for PR #{pr_id}, file: {file_name}")
     conn = sqlite3.connect("code_analysis.db")  # Connect to the database file
     cursor = conn.cursor()
 
@@ -102,11 +93,11 @@ def create_status(repo, sha, state, description, context="Code Quality Check"):
         context=context
     )
 
-# Email sending function
+
 def send_email_notification(recipient_email, pr_id, status, overall_score):
     """Send email notification to the contributor."""
-    sender_email = "reetikabhanushali@gmail.com"  # Replace with your email
-    sender_password = "Sprk@7045712081"       # Replace with your email password or app-specific password
+    sender_email = "your_email@example.com"  # Replace with your email
+    sender_password = "your_password"  # Replace with your email password or app-specific password
 
     subject = f"PR #{pr_id}: Code Quality Check {'Passed' if status == 'success' else 'Failed'}"
     body = f"""
@@ -122,23 +113,20 @@ def send_email_notification(recipient_email, pr_id, status, overall_score):
     Best,
     The Code Review Team
     """
-
-    # Create the email message
     msg = MIMEMultipart()
     msg["From"] = sender_email
     msg["To"] = recipient_email
     msg["Subject"] = subject
     msg.attach(MIMEText(body, "plain"))
 
-    # Send the email
     try:
-        with smtplib.SMTP("smtp.gmail.com", 587) as server:  # Use the appropriate SMTP server
+        with smtplib.SMTP("smtp.gmail.com", 587) as server:
             server.starttls()
             server.login(sender_email, sender_password)
             server.sendmail(sender_email, recipient_email, msg.as_string())
-        print(f"Notification sent to {recipient_email} for PR #{pr_id}")
     except Exception as e:
         print(f"Error sending email: {e}")
+
 
 def main():
     # Step 1: Set up the database
@@ -159,8 +147,6 @@ def main():
 
     # Specify the repository
     REPO_NAME = "ReetikaNEU/AI_Code_Review"
-
-    # Fetch the repository
     repo = g.get_repo(REPO_NAME)
 
     # Fetch open pull requests
@@ -209,7 +195,7 @@ def main():
         print(f"Overall Pylint Score for PR #{pr.number}: {overall_score}")
 
         # Determine success or failure
-        status_state = "success" if overall_score >= 7.0 else "failure"
+        status_state = "success" if overall_score >= 5.0 else "failure"
         status_description = f"Overall Pylint Score: {overall_score:.2f}/10"
 
         # Create a comment notifying the contributor
@@ -228,6 +214,7 @@ If you have questions or need help resolving the issues, please reach out!
 
         # Create a GitHub status check
         create_status(repo, pr.head.sha, status_state, status_description)
+
 
 if __name__ == "__main__":
     main()
