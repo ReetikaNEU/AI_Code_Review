@@ -38,7 +38,7 @@ As software development becomes more complex, reviewing code manually can be err
 ### Install Dependencies:
 You can install the required dependencies using the following command:
 
-```bash
+
 pip install -r requirements.txt
 
 # GitHub Token Setup
@@ -49,7 +49,7 @@ To interact with the GitHub API, you will need a GitHub personal access token.
 2. Create a new token with the required permissions (repo, user, etc.).
 3. Set the token as an environment variable in your terminal:
 
-   ```bash
+
    export GITHUB_TOKEN="your_personal_access_token"
 
 This token will allow the project to authenticate with GitHub and fetch pull requests.
@@ -70,13 +70,15 @@ This token will allow the project to authenticate with GitHub and fetch pull req
 
    ```bash
    pip install -r requirements.txt
-
+    ```
+   
 ## 3. Run the script
 
 You can run the analysis by executing the `fetch_pull_requests.py` script:
 
 ```bash
 python fetch_pull_requests.py
+```
 
 ## 4. Web Interface
 
@@ -84,6 +86,7 @@ You can view the results in the web interface by running the Flask application:
 
 ```bash
 python app.py
+```
 
 Visit [http://localhost:5000](http://localhost:5000) to see the historical analysis results.
 
