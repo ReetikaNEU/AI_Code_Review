@@ -13,8 +13,8 @@ from email.mime.multipart import MIMEMultipart
 
 def load_model():
     """Load CodeBERT tokenizer and model."""
-    tokenizer = AutoTokenizer.from_pretrained("./fine_tuned_codebert/checkpoint-2504")
-    model = AutoModelForSequenceClassification.from_pretrained("./fine_tuned_codebert/checkpoint-2504")
+    tokenizer = AutoTokenizer.from_pretrained("microsoft/codebert-base")
+    model = AutoModelForSequenceClassification.from_pretrained("microsoft/codebert-base")
     return tokenizer, model
 
 

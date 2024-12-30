@@ -20,3 +20,6 @@ print(f"Number of samples: {len(test_data)}")
 print(f"Avg. num_lines: {sum(num_lines) / len(num_lines):.2f}, Min: {min(num_lines)}, Max: {max(num_lines)}")
 print(f"Avg. nested_if_count: {sum(nested_if_count) / len(nested_if_count):.2f}, Min: {min(nested_if_count)}, Max: {max(nested_if_count)}")
 print(f"Avg. loop_count: {sum(loop_count) / len(loop_count):.2f}, Min: {min(loop_count)}, Max: {max(loop_count)}")
+
+
+
