@@ -161,4 +161,6 @@ After the code analysis is complete, users are notified via:
 	•	Fine-tuning of CodeBERT: In the future, the model will be further fine-tuned for more accurate code analysis, especially for specific programming languages or use cases.
 	•	Model Update: As the project evolves, a newer and more optimized version of CodeBERT will be integrated into the workflow to enhance the performance and accuracy of the analysis.
 
-**Thank you for using AI Code Review!**
+
+Thank you for using AI Code Review!
+
